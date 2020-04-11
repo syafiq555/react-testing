@@ -1,17 +1,18 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import generateId from '../../utils/generateId';
+import { addTodo } from '../../redux/todos';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
   const todoRef = React.useRef(null);
-  const [{ todos }, setState] = React.useReducer((s, a) => ({ ...s, ...a }), {
-    todos: [],
-  });
 
   const onSubmit = (e) => {
     e.preventDefault();
     const { value } = todoRef.current;
-    setState({ todos: [...todos, value] });
+    dispatch(addTodo(value));
     todoRef.current.value = '';
   };
 
