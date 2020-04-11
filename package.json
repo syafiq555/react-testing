@@ -14,7 +14,7 @@
     "Playaround"
   ],
   "author": "Syafiq Shamsuddin",
-  "license": "ISC",
+  "license": "none",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
