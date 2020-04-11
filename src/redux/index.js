@@ -3,12 +3,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './rootReducer';
+import { monitorEnhancer } from './enhancers';
 
 const configureStore = (preloadedState = {}) => {
   const middlewares = [thunk];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
-  const enhancers = [middlewareEnhancer];
+  const enhancers = [middlewareEnhancer, monitorEnhancer];
   const composedEnhancers = composeWithDevTools(...enhancers);
   const store = createStore(rootReducer, preloadedState, composedEnhancers);
 
